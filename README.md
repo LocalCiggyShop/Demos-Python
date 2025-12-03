@@ -1,0 +1,1 @@
+Stage 1/3 - Planning of a new trading app will turn into a web app soon
