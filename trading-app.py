@@ -9,9 +9,8 @@ import queue
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
-import matplotlib.dates as mdates
+import matplotlib.dates as mdates#
 from matplotlib.patches import Rectangle
-
 
 class MarketSimulator:
     def __init__(self):
@@ -106,7 +105,7 @@ class TradingApp:
         self.symbol = tk.StringVar(value="NEXUS")
         self.timeframe = tk.StringVar(value="5s")
         self.trade_markers = {sym: [] for sym in self.sim.symbols}
-        self.in_margin_call = False  # New flag to prevent recursive calls
+        self.in_margin_call = False
 
         self.setup_ui()
         threading.Thread(target=self.sim.run, daemon=True).start()
@@ -120,7 +119,6 @@ class TradingApp:
         style.map("Treeview", background=[("selected", "#238636")])
         style.map("Treeview.Heading", background=[("active", "#238636")])
 
-        # Header
         header = tk.Frame(self.root, bg="#0d1117", height=90)
         header.pack(fill=tk.X)
         header.pack_propagate(False)
@@ -146,7 +144,6 @@ class TradingApp:
         self.pnl_label = tk.Label(info_frame, text="P&L: $0.00", font=("Consolas", 16, "bold"), fg="#79c0ff", bg="#0d1117")
         self.pnl_label.pack(anchor="e", pady=(5,0))
 
-        # Buttons
         btn_frame = tk.Frame(right_header, bg="#0d1117")
         btn_frame.pack(anchor="e", pady=10)
         tk.Button(btn_frame, text="+ $100k", command=self.add_100k, bg="#238636", fg="white",
